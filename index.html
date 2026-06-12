@@ -545,21 +545,6 @@
                     { id: 6, nom: 'IA appliquée au sport (Analytics)', dom: 'Sport', eff: 3.5, acc: 3.5, per: 4, scenarioActif: 'rea', rec: 'Mettre en place des lignes directrices éthiques (explainability, fairness), former le staff technique et auditer indépendamment les modèles prédictifs [cite: 14].', opt: 'Plateformes IA certifiées de prévention de blessures et suivi des charges accessibles en démocratisation au sport amateur [cite: 14].', rea: 'Adoption ciblée par les fédérations d\'élite majeures encadrée par des chartes d\'usage déontologiques [cite: 14].', pes: 'Polémiques récurrentes sur les biais algorithmiques ou l\'avantage compétitif déloyal entraînant des restrictions réglementaires[cite: 14].' }
                 ]
              }">
-            
-            <div class="border-b border-slate-200 pb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <div>
-                    <h2 class="text-3xl font-black text-joBleu tracking-tight">4. Évaluation Analytique des Innovations Technologiques</h2>
-                    <p class="text-slate-500 text-sm mt-1">Matrice critique des solutions déployées, scores d'impact $(1-5)$ et scénarios prospectifs d'adoption[cite: 6, 7, 8].</p>
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                    <button @click="currentDomaine = 'all'" :class="currentDomaine === 'all' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Toutes</button>
-                    <button @click="currentDomaine = 'Sécurité'" :class="currentDomaine === 'Sécurité' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Sécurité</button>
-                    <button @click="currentDomaine = 'Spectateurs'" :class="currentDomaine === 'Spectateurs' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Spectateurs</button>
-                    <button @click="currentDomaine = 'Médias'" :class="currentDomaine === 'Médias' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Médias</button>
-                    <button @click="currentDomaine = 'Durabilité'" :class="currentDomaine === 'Durabilité' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Durabilité</button>
-                    <button @click="currentDomaine = 'Sport'" :class="currentDomaine === 'Sport' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Sport</button>
-                </div>
-            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-for="item in lesInnovations" :key="item.id">
