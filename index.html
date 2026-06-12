@@ -33,7 +33,7 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-joArrierePlan text-slate-900 min-h-screen pt-20 antialiased selection:bg-joRose selection:text-white" x-data="{ currentSection: 'accueil' }">
+<body class="bg-joArrierePlan text-slate-900 min-h-screen pt-20 antialiased selection:bg-joRose selection:text-white" x-data=\"{ currentSection: 'accueil' }\">
 
     <nav class="fixed top-0 left-0 right-0 h-20 bg-joBleu text-white shadow-xl z-50 border-b border-joOr/20 backdrop-blur-md bg-opacity-95">
         <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div x-show="currentSection === 'ecosysteme'" x-transition:enter="transition ease-out duration-300" class="space-y-10" x-data="{ openNode: null, siteFilter: 'all' }">
+        <div x-show="currentSection === 'ecosysteme'" x-transition:enter="transition ease-out duration-300" class="space-y-10" x-data=\"{ openNode: null, siteFilter: 'all' }\">
             <div class="border-b border-slate-200 pb-4">
                 <h2 class="text-3xl font-black text-joBleu tracking-tight">1. Écosystème Institutionnel, Cartographie & Budgets</h2>
                 <p class="text-slate-500 text-sm mt-1">Analyse complète des instances de gouvernance, de la répartition géographique et des flux financiers.</p>
@@ -120,27 +120,27 @@
                         <div class="font-bold text-joBleu text-base">CIO / IOC</div>
                         <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Autorité Mondiale</div>
                         <div x-show="openNode === 'cio'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
-                            <p>Garant suprême de la Charte olympique. Il supervise l'ensemble des Comités Nationaux Olympiques (CNO) et attribue l'organisation des Jeux.</p>
-                            <p class="font-semibold text-joViolet">Gestion exclusive des partenariats mondiaux (TOP).</p>
+                            <p>Garant suprême de la Charte olympique[cite: 16]. Il supervise l'ensemble des Comités Nationaux Olympiques (CNO) et attribue l'organisation des Jeux[cite: 16].</p>
+                            <p class="font-semibold text-joViolet">Gestion exclusive des partenariats mondiaux (TOP)[cite: 16].</p>
                         </div>
                     </div>
                     <div @click="openNode = (openNode === 'cnosf' ? null : 'cnosf')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'cnosf' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
                         <div class="font-bold text-joBleu text-base">CNOSF / CPSF</div>
                         <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Coordination Nationale</div>
                         <div x-show="openNode === 'cnosf'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
-                            <p>Représentants officiels du mouvement olympique et paralympique sur le sol français.</p>
-                            <p class="font-semibold text-joViolet">Assurent l'interface avec les fédérations sportives nationales et l'Agence Nationale du Sport (ANS).</p>
+                            <p>Représentants officiels du mouvement olympique et paralympique sur le sol français[cite: 16].</p>
+                            <p class="font-semibold text-joViolet">Assurent l'interface avec les fédérations sportives nationales et l'Agence Nationale du Sport (ANS)[cite: 16].</p>
                         </div>
                     </div>
                     <div @click="openNode = (openNode === 'cojo' ? null : 'cojo')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'cojo' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
                         <div class="font-bold text-joBleu text-base">COJO PARIS 2024</div>
                         <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Comité d'Organisation</div>
                         <div x-show="openNode === 'cojo'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
-                            <p>Présidé par Tony Estanguet. Maître d'œuvre de la livraison opérationnelle des épreuves.</p>
+                            <p>Présidé par Tony Estanguet[cite: 16]. Maître d'œuvre de la livraison opérationnelle des épreuves[cite: 16].</p>
                             <div class="bg-slate-100 p-2 rounded-lg font-mono text-[11px] text-slate-700 space-y-1">
-                                <div>• Budget : ~4,4 Md€</div>
-                                <div>• Billetterie : ~12M billets</div>
-                                <div class="text-emerald-600 font-bold">• Surplus : +26,8 M€</div>
+                                <div>• Budget : ~4,4 Md€ [cite: 16]</div>
+                                <div>• Billetterie : ~12M billets [cite: 16]</div>
+                                <div class="text-emerald-600 font-bold">• Surplus : +26,8 M€ [cite: 16]</div>
                             </div>
                         </div>
                     </div>
@@ -148,8 +148,8 @@
                         <div class="font-bold text-joBleu text-base">Acteurs Publics</div>
                         <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">État & Collectivités</div>
                         <div x-show="openNode === 'public'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
-                            <p>Regroupe l'État Français, la Ville de Paris, la Région Île-de-France et la Métropole du Grand Paris.</p>
-                            <p class="font-semibold text-joViolet">Piliers de la coordination sécuritaire, de l'adaptation législative et du réseau de transport public.</p>
+                            <p>Regroupe l'État Français, la Ville de Paris, la Région Île-de-France et la Métropole du Grand Paris[cite: 16].</p>
+                            <p class="font-semibold text-joViolet">Piliers de la coordination sécuritaire, de l'adaptation législative et du réseau de transport public[cite: 16].</p>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                         <h3 class="text-lg font-bold text-joBleu flex items-center">
                             <span class="w-2 h-4 bg-joRose rounded-sm mr-2 block"></span> Typologie et Sélection des Sites Majeurs
                         </h3>
-                        <p class="text-xs text-slate-400 mt-1">Un modèle sobre : <span class="text-joRose font-bold">93%</span> des infrastructures de compétition sont existantes ou temporaires.</p>
+                        <p class="text-xs text-slate-400 mt-1">Un modèle sobre : <span class="text-joRose font-bold">93%</span> des infrastructures de compétition sont existantes ou temporaires[cite: 16].</p>
                     </div>
                     <div class="flex flex-wrap gap-2">
                         <button @click="siteFilter = 'all'" :class="siteFilter === 'all' ? 'bg-joBleu text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all">Tous les pôles</button>
@@ -174,35 +174,35 @@
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                     <div x-show="siteFilter === 'all' || siteFilter === '93'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Stade de France</span>
-                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Athlétisme / Existant</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Athlétisme / Existant [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Champ-de-Mars</span>
-                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Volley de plage / Temporaire</span>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Volley de plage / Temporaire [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Invalides</span>
-                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Tir à l'arc / Temporaire</span>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Tir à l'arc / Temporaire [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Grand Palais</span>
-                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Escrime & Taekwondo</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Escrime & Taekwondo [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Roland-Garros</span>
-                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Tennis & Boxe / Existant</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Tennis & Boxe / Existant [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === '93'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Centre Aquatique (CAO)</span>
-                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Natation / Neuf (Pérenne)</span>
+                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Natation / Neuf [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Arena Porte de la Chapelle</span>
-                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Badminton / Neuf (Pérenne)</span>
+                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Badminton / Neuf [cite: 16]</span>
                     </div>
                     <div x-show="siteFilter === 'all' || siteFilter === 'hors-idf'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Teahupo'o (Tahiti)</span>
-                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Surf / Site Naturel</span>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Surf / Site Naturel [cite: 16]</span>
                     </div>
                 </div>
             </div>
@@ -215,8 +215,8 @@
                     <div class="space-y-4 pt-2">
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
-                                <span class="text-slate-700">Budget COJO (Fonds Privés : Billetterie, Sponsoring, CIO)</span>
-                                <span class="text-emerald-600 font-bold">~4,4 Md€ (Excédent final +26,8 M€)</span>
+                                <span class="text-slate-700">Budget COJO (Fonds Privés)</span>
+                                <span class="text-emerald-600 font-bold">~4,4 Md€ (Excédent final +26,8 M€) [cite: 16]</span>
                             </div>
                             <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
                                 <div class="bg-emerald-500 h-full rounded-full" style="width: 73%"></div>
@@ -225,7 +225,7 @@
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700">Dépense Publique Globale (Est. Cour des comptes, juin 2025)</span>
-                                <span class="text-amber-600 font-bold">~6,0 Md€</span>
+                                <span class="text-amber-600 font-bold">~6,0 Md€ [cite: 16]</span>
                             </div>
                             <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
                                 <div class="bg-amber-500 h-full rounded-full" style="width: 100%"></div>
@@ -234,14 +234,14 @@
                         <div>
                             <div class="flex justify-between text-xs font-semibold mb-1">
                                 <span class="text-slate-700">Dépense Publique Globale (Rapport parlementaire, juillet 2025)</span>
-                                <span class="text-indigo-600 font-bold">~3,67 Md€</span>
+                                <span class="text-indigo-600 font-bold">~3,67 Md€ [cite: 16]</span>
                             </div>
                             <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
                                 <div class="bg-indigo-600 h-full rounded-full" style="width: 61%"></div>
                             </div>
                         </div>
                     </div>
-                    <p class="text-[11px] text-slate-400 italic">Note UX : La fourchette indicative de la dépense publique doit être présentée avec prudence en raison des périmètres méthodologiques variables.</p>
+                    <p class="text-[11px] text-slate-400 italic">Note UX : La fourchette indicative de la dépense publique doit être présentée avec prudence en raison des périmètres méthodologiques variables[cite: 16].</p>
                 </div>
 
                 <div class="bg-gradient-to-br from-joBleu to-joViolet text-white rounded-2xl p-6 shadow-md flex flex-col justify-between">
@@ -249,12 +249,12 @@
                         <span class="text-[10px] uppercase font-bold tracking-widest text-joOr font-mono">Maillon de l'Héritage</span>
                         <h4 class="text-2xl font-black mt-1 mb-3 tracking-tight">SOLIDEO</h4>
                         <p class="text-xs text-slate-200 leading-relaxed font-light">
-                            Société de Livraison des Ouvrages Olympiques. Établissement public chargé de concevoir et livrer l'ensemble des structures pérennes tout en garantissant un modèle d'urbanisme durable pour la phase post-événementielle.
+                            Société de Livraison des Ouvrages Olympiques[cite: 16]. Établissement public chargé de concevoir et livrer l'ensemble des structures pérennes tout en garantissant un modèle d'urbanisme durable pour la phase post-événementielle[cite: 16].
                         </p>
                     </div>
                     <div class="border-t border-white/10 pt-3 mt-4 text-[10px] font-mono text-joOr flex justify-between">
                         <span>Statut :</span>
-                        <span class="font-bold">Ouvrages livrés dans les temps</span>
+                        <span class="font-bold">Ouvrages livrés dans les délais [cite: 16]</span>
                     </div>
                 </div>
             </div>
@@ -270,7 +270,7 @@
                         <div class="md:absolute md:-left-28 md:top-0.5 text-xs font-bold text-slate-400 font-mono text-right md:w-20">2017 - 2023</div>
                         <div class="ml-6 bg-slate-50 p-4 rounded-xl border border-slate-200/40">
                             <h4 class="text-sm font-bold text-joBleu">Candidature, Planification & Chantiers</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Fixation de critères environnementaux sans précédent et intégration des clauses d'insertion dans la commande publique.</p>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Fixation de critères environnementaux sans précédent et intégration des clauses d'insertion dans la commande publique[cite: 16].</p>
                         </div>
                     </div>
                     <div class="relative">
@@ -279,8 +279,8 @@
                         <div class="ml-6 bg-white p-4 rounded-xl border border-joRose/20 shadow-sm">
                             <h4 class="text-sm font-bold text-joBleu">Phase Opérationnelle & Performance Carbone</h4>
                             <ul class="text-xs text-slate-600 mt-2 space-y-1 list-disc list-inside font-light">
-                                <li>Réduction validée de <span class="font-bold text-joRose">54,6 %</span> des émissions CO₂ face aux précédentes éditions.</li>
-                                <li>Mobilisation de plus de <span class="font-bold text-joViolet">1 000 entreprises</span> de l'Économie Sociale et Solidaire (ESS).</li>
+                                <li>Réduction de <span class="font-bold text-joRose">~54,6 %</span> des émissions CO₂ face aux précédentes éditions[cite: 16].</li>
+                                <li>Mobilisation de plus de <span class="font-bold text-joViolet">1 000 entreprises</span> de l'Économie Sociale et Solidaire (ESS)[cite: 16].</li>
                             </ul>
                         </div>
                     </div>
@@ -289,7 +289,7 @@
                         <div class="md:absolute md:-left-28 md:top-0.5 text-xs font-bold text-joViolet font-mono text-right md:w-20">2025 - 2030</div>
                         <div class="ml-6 bg-slate-50 p-4 rounded-xl border border-slate-200/40">
                             <h4 class="text-sm font-bold text-joBleu">Reconversion & Héritage Matériel</h4>
-                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Transformation immédiate du Village en éco-quartiers habitables et réutilisation pérenne de 95% des structures et mobiliers.</p>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Transformation immédiate du Village en éco-quartiers habitables et réutilisation pérenne de 95% des structures et mobiliers[cite: 16].</p>
                         </div>
                     </div>
                 </div>
@@ -301,14 +301,14 @@
                 filterEpreuve: 'all', 
                 triBy: 'date',
                 donneesRaces: [
-                    { comp: 'Ch. de France (sélections)', epreuve: '200 m 4 nages', date: '2024-06-21', lieu: 'Chartres (FRA)', chrono: '1:56.33', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
-                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m 4 nages', date: '2024-08-02', lieu: 'Paris La Défense Arena', chrono: '1:54.06 (OR)', place: 'Or (record olympique)', evo: 1.95, note: 'Net progrès vs sélections' },
-                    { comp: 'Ch. de France (sélections)', epreuve: '200 m brasse', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '2:08.95', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
-                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m brasse', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '2:05.85 (OR)', place: 'Or (record olympique)', evo: 2.40, note: 'Net progrès vs sélections' },
-                    { comp: 'Ch. de France (sélections)', epreuve: '200 m papillon', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '1:54.08', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
-                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m papillon', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '1:51.21 (OR)', place: 'Or (record olympique)', evo: 2.52, note: 'Net progrès vs sélections' },
-                    { comp: 'Ch. de France (sélections)', epreuve: '400 m 4 nages', date: '2024-06-17', lieu: 'Chartres (FRA)', chrono: '4:10.62', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
-                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '400 m 4 nages', date: '2024-07-28', lieu: 'Paris La Défense Arena', chrono: '4:02.95 (OR)', place: 'Or (record olympique)', evo: 3.06, note: 'Net progrès vs sélections' }
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m 4 nages', date: '2024-06-21', lieu: 'Chartres (FRA)', chrono: '1:56.33', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve [cite: 1]' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m 4 nages', date: '2024-08-02', lieu: 'Paris La Défense Arena', chrono: '1:54.06 (OR)', place: 'Or (record olympique)', evo: 1.95, note: 'Net progrès vs sélections [cite: 1]' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m brasse', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '2:08.95', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve [cite: 1]' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m brasse', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '2:05.85 (OR)', place: 'Or (record olympique)', evo: 2.40, note: 'Net progrès vs sélections [cite: 1]' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m papillon', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '1:54.08', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve [cite: 1]' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m papillon', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '1:51.21 (OR)', place: 'Or (record olympique)', evo: 2.52, note: 'Net progrès vs sélections [cite: 1]' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '400 m 4 nages', date: '2024-06-17', lieu: 'Chartres (FRA)', chrono: '4:10.62', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve [cite: 1]' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '400 m 4 nages', date: '2024-07-28', lieu: 'Paris La Défense Arena', chrono: '4:02.95 (OR)', place: 'Or (record olympique)', evo: 3.06, note: 'Net progrès vs sélections [cite: 1]' }
                 ],
                 get racesCalculees() {
                     let r = this.donneesRaces.filter(item => this.filterEpreuve === 'all' || item.epreuve === this.filterEpreuve);
@@ -320,27 +320,27 @@
             <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                 <div>
                     <h2 class="text-3xl font-black text-joBleu tracking-tight">2. Suivi Analytique Métrique — Léon Marchand</h2>
-                    <p class="text-slate-500 text-sm mt-1">Analyse micro-comparative de l'évolution des temps absolus enregistrés durant la saison 2024.</p>
+                    <p class="text-slate-500 text-sm mt-1">Analyse micro-comparative de l'évolution des temps absolus enregistrés durant la saison 2024[cite: 1].</p>
                 </div>
                 <div class="flex space-x-3">
                     <div class="bg-white border px-4 py-2 rounded-xl text-center shadow-sm">
                         <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Titres Olympiques</span>
-                        <span class="text-xl font-black text-joBleu font-mono">4 x 🥇</span>
+                        <span class="text-xl font-black text-joBleu font-mono">4 x 🥇 [cite: 1]</span>
                     </div>
                     <div class="bg-white border px-4 py-2 rounded-xl text-center shadow-sm">
                         <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Progression Peak</span>
-                        <span class="text-xl font-black text-joRose font-mono">+3.06%</span>
+                        <span class="text-xl font-black text-joRose font-mono">+3.06% [cite: 1]</span>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60">
-                <h3 class="text-sm font-bold uppercase text-slate-400 font-mono tracking-wider mb-6">Pourcentage de progression chronométrique (Sélections vs Finales JO)</h3>
+                <h3 class="text-sm font-bold uppercase text-slate-400 font-mono tracking-wider mb-6">Pourcentage de progression chronométrique (Sélections vs Finales JO) [cite: 1]</h3>
                 <div class="space-y-5">
                     <div>
                         <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                             <span>400 m 4 nages</span>
-                            <span class="text-joRose font-bold font-mono">+3.06%</span>
+                            <span class="text-joRose font-bold font-mono">+3.06% [cite: 1]</span>
                         </div>
                         <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                             <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 100%"></div>
@@ -349,7 +349,7 @@
                     <div>
                         <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                             <span>200 m papillon</span>
-                            <span class="text-joRose font-bold font-mono">+2.52%</span>
+                            <span class="text-joRose font-bold font-mono">+2.52% [cite: 1]</span>
                         </div>
                         <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                             <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 82%"></div>
@@ -358,7 +358,7 @@
                     <div>
                         <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                             <span>200 m brasse</span>
-                            <span class="text-joRose font-bold font-mono">+2.40%</span>
+                            <span class="text-joRose font-bold font-mono">+2.40% [cite: 1]</span>
                         </div>
                         <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                             <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 78%"></div>
@@ -367,7 +367,7 @@
                     <div>
                         <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
                             <span>200 m 4 nages</span>
-                            <span class="text-joRose font-bold font-mono">+1.95%</span>
+                            <span class="text-joRose font-bold font-mono">+1.95% [cite: 1]</span>
                         </div>
                         <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
                             <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 63%"></div>
@@ -425,7 +425,7 @@
                                         <span :class="r.place.includes('Or') ? 'text-amber-600 font-extrabold flex items-center' : 'text-slate-600 font-normal'" x-html="r.place.includes('Or') ? '🥇 ' + r.place : r.place"></span>
                                     </td>
                                     <td class="px-6 py-4 font-mono font-bold">
-                                        <span x-show="r.evo > 0" class="text-emerald-600" x-text="'+' + r.evo + ' %'"></span>
+                                        <span x-show="r.evo > 0" class="text-emerald-600" x-text=\"'+' + r.evo + ' %'\"></span>
                                         <span x-show="r.evo === 0" class="text-slate-300 font-normal">—</span>
                                     </td>
                                     <td class="px-6 py-4 text-xs font-normal text-slate-500 hidden lg:table-cell" x-text="r.note"></td>
@@ -441,7 +441,7 @@
             <div class="text-center space-y-3">
                 <span class="text-[11px] uppercase font-extrabold font-mono tracking-widest text-joRose bg-pink-50 px-3 py-1 rounded-full border border-pink-100">Chronique d'un Territoire</span>
                 <h2 class="text-4xl font-black text-joBleu tracking-tight">3. L'Héritage Territorial en Seine-Saint-Denis (93)</h2>
-                <p class="text-slate-500 text-sm max-w-xl mx-auto font-light">Un récit de l'intérieur relatant la transformation matérielle et sociale vécue par les résidents.</p>
+                <p class="text-slate-500 text-sm max-w-xl mx-auto font-light">Un récit de l'intérieur relatant la transformation matérielle et sociale vécue par les résidents[cite: 42, 43].</p>
             </div>
 
             <div class="relative border-l border-slate-200 pl-6 md:pl-10 ml-2 space-y-14">
@@ -449,8 +449,8 @@
                 <div class="relative group">
                     <div class="absolute -left-[31px] md:-left-[47px] top-0 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
                     <blockquote class="text-lg md:text-xl font-serif italic text-slate-800 bg-joIvoire/50 p-6 rounded-2xl border-l-4 border-joOr shadow-sm">
-                        "Je vis depuis toujours en Seine-Saint-Denis, et j'ai suivi de près la préparation... Je prends un moment pour témoigner de ce que j'ai observé : ce que les Jeux ont laissé, ce qu'ils ont transformé, et ce que cela change pour mon quotidien."
-                        <span class="block text-[11px] font-mono tracking-widest uppercase font-bold text-slate-400 not-italic mt-3">— Regard Habitant, Extrait du Texte Local</span>
+                        "Je vis depuis toujours en Seine-Saint-Denis, et j'ai suivi de près la préparation... Je prends un moment pour témoigner de ce que j'ai observé : ce que les Jeux ont laissé, ce qu'ils ont transformé, et ce que cela change pour mon quotidien." [cite: 42, 43]
+                        <span class="block text-[11px] font-mono tracking-widest uppercase font-bold text-slate-400 not-italic mt-3">— Regard Habitant, Extrait du Texte Local [cite: 42]</span>
                     </blockquote>
                 </div>
 
@@ -458,17 +458,17 @@
                     <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
                     <h3 class="text-xl font-bold text-joBleu mb-2">Métamorphose du Logement & Plan Piscines</h3>
                     <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
-                        Le secteur du village des athlètes, à Saint-Denis, se transforme de manière pérenne en un éco-quartier moderne pourvu de commerces, d'espaces verts et d'infrastructures. Les **4 000 logements** programmés intègrent un quota protecteur de **40% de logements sociaux**. 
-                        Parallèlement, le <span class="font-bold text-joViolet">"plan piscines"</span> vient combler de façon définitive le déficit structurel de bassins (historiquement qualifié de *désert de natation*).
+                        Le secteur du village des athlètes, à Saint-Denis, se transforme de manière pérenne en un éco-quartier moderne pourvu de commerces, d'espaces verts et d'infrastructures[cite: 52, 80]. Les **4 000 logements** programmés intègrent un quota protecteur de **40% de logements sociaux**[cite: 52, 82]. 
+                        Parallèlement, le <span class="font-bold text-joViolet">"plan piscines"</span> vient combler de façon définitive le déficit structurel de bassins, historiquement qualifié de *désert de natation*[cite: 84].
                     </p>
                     <div class="grid grid-cols-2 gap-4 mt-4">
                         <div class="bg-white border rounded-xl p-4 shadow-sm text-center">
                             <span class="block text-2xl font-black text-joViolet font-mono">4 000</span>
-                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">Logements en Reconversion</span>
+                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">Logements en Reconversion [cite: 52]</span>
                         </div>
                         <div class="bg-white border rounded-xl p-4 shadow-sm text-center">
                             <span class="block text-2xl font-black text-joRose font-mono">40%</span>
-                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">De Logement Social Garanti</span>
+                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">De Logement Social Garanti [cite: 82]</span>
                         </div>
                     </div>
                 </div>
@@ -477,7 +477,7 @@
                     <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
                     <h3 class="text-xl font-bold text-joBleu mb-2">Désenclavement & Franchissements Urbains</h3>
                     <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
-                        L'apparition de passerelles conçues pour <span class="italic font-medium text-joBleu">"recoudre"</span> les deux rives de la Seine ou enjamber les complexes autoroutiers a profondément fluidifié les mobilités douces de proximité. Ce nouveau franchissement urbain permet de relier plus efficacement les communes limitrophes et de réduire considérablement les trajets journaliers en bus ou à pied.
+                        L'apparition de passerelles conçues pour <span class="italic font-medium text-joBleu">"recoudre"</span> les deux rives de la Seine ou enjamber les complexes autoroutiers a profondément fluidifié les mobilités douces de proximité[cite: 49]. Ce nouveau franchissement urbain permet de relier plus efficacement les communes limitrophes et de réduire considérablement les trajets journaliers[cite: 51, 77].
                     </p>
                 </div>
 
@@ -485,11 +485,11 @@
                     <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
                     <h3 class="text-xl font-bold text-joBleu mb-2">Commande Publique Fléchée & Insertion</h3>
                     <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light mb-4">
-                        Les chantiers ont fait sauter les plafonds des clauses d'insertion professionnelle pour les publics éloignés de l'emploi. Le grand bénéficiaire reste le tissu de PME et d'artisans locaux : pas moins de **280 millions d'euros** de commandes de l'État et des donneurs d'ordres ont été directement injectés au bénéfice des entreprises du 93.
+                        Les chantiers ont fait sauter les plafonds des clauses d'insertion professionnelle pour les publics éloignés de l'emploi[cite: 56, 58]. Le grand bénéficiaire reste le tissu de PME et d'artisans locaux : pas moins de **280 millions d'euros** de commandes de l'État et des donneurs d'ordres ont été directement injectés au bénéfice des entreprises du 93[cite: 60].
                     </p>
                     <div class="bg-joBleu text-white px-5 py-3 rounded-xl flex items-center justify-between font-mono text-xs shadow-md">
                         <span class="text-slate-300 font-sans">Retombées Économiques directes (PME du 93) :</span>
-                        <span class="text-lg font-black text-joOr">280 000 000 €</span>
+                        <span class="text-lg font-black text-joOr">280 000 000 € [cite: 60]</span>
                     </div>
                 </div>
 
@@ -497,7 +497,7 @@
                     <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
                     <h3 class="text-xl font-bold text-joBleu mb-2">Cohésion Sociale et Équipements Mobiles</h3>
                     <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
-                        Afin que la pratique ne s'adresse pas qu'à des élites, des dispositifs inclusifs innovants ont été lancés. À l'image de la municipalité de Tremblay-en-France, le territoire s'est doté d'équipements sportifs mobiles (structures de boxe gonflables, terrains de basket 3x3 mobiles) afin d'apporter l'activité au pied des immeubles et de recréer de la cohésion intergénérationnelle.
+                        Afin que la pratique ne s'adresse pas qu'à des élites, des dispositifs inclusifs innovants ont été lancés[cite: 67, 71]. À l'image de la municipalité de Tremblay-en-France, le territoire s'est doté d'équipements sportifs mobiles (structures de boxe gonflables, terrains de basket 3x3 mobiles) afin d'apporter l'activité au pied des immeubles et de recréer de la cohésion intergénérationnelle[cite: 68, 70].
                     </p>
                 </div>
 
@@ -507,21 +507,20 @@
         <div x-show="currentSection === 'innovations'" x-transition:enter="transition ease-out duration-300" class="space-y-8"
              x-data="{ 
                 currentDomaine: 'all',
-                activeScenario: {}, // Dictionnaire d'état [id_innovation]: 'opt' | 'rea' | 'pes'
                 lesInnovations: [
-                    { id: 1, nom: 'Vidéosurveillance algorithmique', dom: 'Sécurité', eff: 4, acc: 2.5, per: 3.5, rec: 'Co-construire un cadre de transparence (panneaux clairs, audits indépendants), publier des métriques d\'efficacité non nominatives, instaurer un « privacy by design ».', opt: 'Pérennisation avec gouvernance forte, baisse des incidents et temps de réponse sur les événements massifs.', rea: 'Usage ciblé (périmètres/horaires restreints) avec évaluations parlementaires et audits réguliers.', pes: 'Rejet social et juridique majeur des ONG entraînant le retrait complet des dispositifs algorithmiques.' },
-                    { id: 2, nom: 'Billetterie 100% dématérialisée', dom: 'Spectateurs', eff: 4.5, acc: 4, per: 4.5, rec: 'Offrir des options offline (wallet/QR hors-ligne), « kiosks » de secours physiques, et un canal officiel unique de revente pour tarir le marché gris.', opt: 'Intégration ID client + paiement + accès transport en un seul flux → parcours spectateur sans aucune couture.', rea: 'Maintien du 100% mobile standardisé avec guichets d\'assistance physique limités aux entrées.', pes: 'Incidents réseaux d\'envergure ou fraudes ciblées provoquant des goulots d\'étranglement majeurs et retour forcé au papier.' },
-                    { id: 3, nom: 'App transport & gestion de flux', dom: 'Spectateurs', eff: 4, acc: 4, per: 4, rec: 'Normaliser les API temps réel, exécuter des tests de charge continus, et formaliser des « playbooks » de redirection avec messagerie push multilingue.', opt: 'Orchestration multimodale (RER/métro/marche) ultra-fluide guidée par IA prédictive, intégrée à la billetterie régionale.', rea: 'Maintien efficace d\'itinéraires dédiés lors de grands pics de charge (concerts, salons).', pes: 'Surcharge des serveurs ou données de trafic incomplètes provoquant des pertes de confiance des usagers.' },
-                    { id: 4, nom: 'OBS Cloud 3.0 (Diffusion Cloud)', dom: 'Médias', eff: 5, acc: 4.5, per: 5, rec: 'Renforcer la résilience multi-cloud, unifier les normes de cybersécurité partagées, et statuer des SLA clairs sur la latence de bout en bout.', opt: 'Production audiovisuelle mondiale quasi-entièrement distante avec personnalisation par marché géographique en temps réel.', rea: 'Modèle hybride équilibré (Cloud + On-site) avec montée progressive de l\'IA pour l\'indexation automatique des temps forts.', pes: 'Incidents critiques de latence internationale ou failles de sécurité forçant le retour à des infrastructures lourdes au sol.' },
-                    { id: 5, nom: 'Infrastructures sobres & Énergie', dom: 'Durabilité', eff: 4.5, acc: 4, per: 4.5, rec: 'Standardiser l\'approche « grid-first », constituer un inventaire d\'actifs photovoltaïques mobiles et partager des tableaux de bord carbone live.', opt: 'Généralisation de contrats d\'achat d\'énergie verte exclusifs avec monitoring en temps réel de tous les événements européens.', rea: 'Généralisation réglementaire du « tout raccordé au réseau public » combiné à des parcs photovoltaïques temporaires.', pes: 'Contraintes d\'infrastructures électriques locales trop lourdes forçant le recours ponctuel aux générateurs thermiques diesel.' },
-                    { id: 6, nom: 'IA appliquée au sport (Analytics)', dom: 'Sport', eff: 3.5, acc: 3.5, per: 4, rec: 'Mettre en place des lignes directrices éthiques (explainability, fairness), former le staff technique et auditer indépendamment les modèles prédictifs.', opt: 'Plateformes IA certifiées de prévention de blessures et suivi des charges accessibles en démocratisation au sport amateur.', rea: 'Adoption ciblée par les fédérations d'élite majeures encadrée par des chartes d'usage déontologiques.', pes: 'Polémiques récurrentes sur les biais algorithmiques ou l'avantage compétitif déloyal entraînant des restrictions réglementaires.' }
+                    { id: 1, nom: 'Vidéosurveillance algorithmique', dom: 'Sécurité', eff: 4, acc: 2.5, per: 3.5, scenarioActif: 'rea', rec: 'Co-construire un cadre de transparence (panneaux clairs, audits indépendants), publier des métriques d\'efficacité non nominatives, instaurer un « privacy by design » [cite: 9].', opt: 'Pérennisation avec gouvernance forte, baisse des incidents et temps de réponse sur les événements massifs [cite: 9].', rea: 'Usage ciblé (périmètres/horaires restreints) avec évaluations parlementaires et audits réguliers [cite: 9].', pes: 'Rejet social et juridique majeur des ONG entraînant le retrait complet des dispositifs algorithmiques[cite: 9].' },
+                    { id: 2, nom: 'Billetterie 100% dématérialisée', dom: 'Spectateurs', eff: 4.5, acc: 4, per: 4.5, scenarioActif: 'rea', rec: 'Offrir des options offline (wallet/QR hors-ligne), « kiosks » de secours physiques, et un canal officiel unique de revente pour tarir le marché gris [cite: 10].', opt: 'Intégration ID client + paiement + accès transport en un seul flux → parcours spectateur sans aucune couture [cite: 10].', rea: 'Maintien du 100% mobile standardisé avec guichets d\'assistance physique limités aux entrées [cite: 10].', pes: 'Incidents réseaux d\'envergure ou fraudes ciblées provoquant des goulots d\'étranglement majeurs et retour forcé au papier[cite: 10].' },
+                    { id: 3, nom: 'App transport & gestion de flux', dom: 'Spectateurs', eff: 4, acc: 4, per: 4, scenarioActif: 'rea', rec: 'Normaliser les API temps réel, exécuter des tests de charge continus, et formaliser des « playbooks » de redirection avec messagerie push multilingue [cite: 11].', opt: 'Orchestration multimodale (RER/métro/marche) ultra-fluide guidée par IA prédictive, intégrée à la billetterie régionale [cite: 11].', rea: 'Maintien efficace d\'itinéraires dédiés lors de grands pics de charge (concerts, salons) [cite: 11].', pes: 'Surcharge des serveurs ou données de trafic incomplètes provoquant des pertes de confiance des usagers[cite: 11].' },
+                    { id: 4, nom: 'OBS Cloud 3.0 (Diffusion Cloud)', dom: 'Médias', eff: 5, acc: 4.5, per: 5, scenarioActif: 'rea', rec: 'Renforcer la résilience multi-cloud, unifier les normes de cybersécurité partagées, et statuer des SLA clairs sur la latence de bout en bout [cite: 12].', opt: 'Production audiovisuelle mondiale quasi-entièrement distante avec personnalisation par marché géographique en temps réel [cite: 12].', rea: 'Modèle hybride équilibré (Cloud + On-site) avec montée progressive de l\'IA pour l\'indexation automatique des temps forts [cite: 12].', pes: 'Incidents critiques de latence internationale ou failles de sécurité forçant le retour à des infrastructures lourdes au sol[cite: 12].' },
+                    { id: 5, nom: 'Infrastructures sobres & Énergie', dom: 'Durabilité', eff: 4.5, acc: 4, per: 4.5, scenarioActif: 'rea', rec: 'Standardiser l\'approche « grid-first », constituer un inventaire d\'actifs photovoltaïques mobiles et partager des tableaux de bord carbone live [cite: 13].', opt: 'Généralisation de contrats d\'achat d\'énergie verte exclusifs avec monitoring en temps réel de tous les événements européens [cite: 13].', rea: 'Généralisation réglementaire du « tout raccordé au réseau public » combiné à des parcs photovoltaïques temporaires [cite: 13].', pes: 'Contraintes d\'infrastructures électriques locales trop lourdes forçant le recours ponctuel aux générateurs thermiques diesel[cite: 13].' },
+                    { id: 6, nom: 'IA appliquée au sport (Analytics)', dom: 'Sport', eff: 3.5, acc: 3.5, per: 4, scenarioActif: 'rea', rec: 'Mettre en place des lignes directrices éthiques (explainability, fairness), former le staff technique et auditer indépendamment les modèles prédictifs [cite: 14].', opt: 'Plateformes IA certifiées de prévention de blessures et suivi des charges accessibles en démocratisation au sport amateur [cite: 14].', rea: 'Adoption ciblée par les fédérations d\'élite majeures encadrée par des chartes d\'usage déontologiques [cite: 14].', pes: 'Polémiques récurrentes sur les biais algorithmiques ou l\'avantage compétitif déloyal entraînant des restrictions réglementaires[cite: 14].' }
                 ]
              }">
             
             <div class="border-b border-slate-200 pb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div>
                     <h2 class="text-3xl font-black text-joBleu tracking-tight">4. Évaluation Analytique des Innovations Technologiques</h2>
-                    <p class="text-slate-500 text-sm mt-1">Matrice critique des solutions déployées, scores d'impact $(1-5)$ et scénarios prospectifs d'adoption.</p>
+                    <p class="text-slate-500 text-sm mt-1">Matrice critique des solutions déployées, scores d'impact $(1-5)$ et scénarios prospectifs d'adoption[cite: 6, 8].</p>
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                     <button @click="currentDomaine = 'all'" :class="currentDomaine === 'all' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Toutes</button>
@@ -536,7 +535,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-for="item in lesInnovations" :key="item.id">
                     <div x-show="currentDomaine === 'all' || item.dom === currentDomaine" 
-                         x-init="activeScenario[item.id] = 'rea'"
                          class="bg-white rounded-2xl border border-slate-200/60 p-5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
                         
                         <div>
@@ -578,14 +576,14 @@
 
                             <div class="space-y-2">
                                 <div class="flex border-b border-slate-100 text-[10px] font-bold font-mono tracking-wider uppercase">
-                                    <button @click="activeScenario[item.id] = 'opt'" :class="activeScenario[item.id] === 'opt' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Optimiste</button>
-                                    <button @click="activeScenario[item.id] = 'rea'" :class="activeScenario[item.id] === 'rea' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Réaliste</button>
-                                    <button @click="activeScenario[item.id] = 'pes'" :class="activeScenario[item.id] === 'pes' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Pessimiste</button>
+                                    <button @click="item.scenarioActif = 'opt'" :class="item.scenarioActif === 'opt' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Optimiste</button>
+                                    <button @click="item.scenarioActif = 'rea'" :class="item.scenarioActif === 'rea' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Réaliste</button>
+                                    <button @click="item.scenarioActif = 'pes'" :class="item.scenarioActif === 'pes' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Pessimiste</button>
                                 </div>
                                 <div class="p-3 bg-joIvoire rounded-b-xl text-xs text-slate-600 min-h-[72px] flex items-center font-light leading-relaxed border-x border-b border-slate-100">
-                                    <p x-show="activeScenario[item.id] === 'opt'" x-text="item.opt" x-transition></p>
-                                    <p x-show="activeScenario[item.id] === 'rea'" x-text="item.rea" x-transition></p>
-                                    <p x-show="activeScenario[item.id] === 'pes'" x-text="item.pes" x-transition></p>
+                                    <p x-show="item.scenarioActif === 'opt'" x-text="item.opt" x-transition></p>
+                                    <p x-show="item.scenarioActif === 'rea'" x-text="item.rea" x-transition></p>
+                                    <p x-show="item.scenarioActif === 'pes'" x-text="item.pes" x-transition></p>
                                 </div>
                             </div>
                         </div>
