@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris 2024 : Écosystème & Héritage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        joBleu: '#001C54',
+                        joOr: '#E5C58A',
+                        joRose: '#E84E8A',
+                        joViolet: '#62228E',
+                        joIvoire: '#FAF7F2'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Styles personnalisés additionnels pour peaufiner l'immersion */
+        .neon-border:hover {
+            box-shadow: 0 0 15px rgba(229, 197, 138, 0.4);
+            border-color: #E5C58A;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased" x-data="{ currentTab: 'home' }">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-joBleu text-white shadow-lg border-b border-joOr/30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-3 cursor-pointer" @click="currentTab = 'home'">
+                    <div class="w-10 h-10 bg-gradient-to-tr from-joOr via-joRose to-joViolet rounded-full flex items-center justify-center font-bold text-white shadow-inner">
+                        24
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-xl tracking-wider text-joOr">PARIS 2024</span>
+                        <span class="block text-xs uppercase tracking-widest text-gray-300">Écosystème & Héritage</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-1 text-sm font-medium">
+                    <button @click="currentTab = 'ecosystem'" :class="currentTab === 'ecosystem' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Écosystème</button>
+                    <button @click="currentTab = 'performance'" :class="currentTab === 'performance' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Dashboard Marchand</button>
+                    <button @click="currentTab = 'story'" :class="currentTab === 'story' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Récit Seine-Saint-Denis</button>
+                    <button @click="currentTab = 'innovations'" :class="currentTab === 'innovations' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Innovations</button>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500 text-white animate-pulse">
+                        Live Legacy
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 min-h-screen">
+
+        <div x-show="currentTab === 'home'" x-transition:enter="transition ease-out duration-300" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center py-16 bg-gradient-to-b from-joBleu to-joViolet text-white rounded-3xl shadow-2xl relative overflow-hidden mb-16 px-6">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">
+                    Paris 2024 : <span class="text-joOr">Écosystème & Héritage</span>
+                </h1>
+                <p class="text-xl max-w-3xl mx-auto text-gray-200 font-light leading-relaxed">
+                    Explorez les rouages institutionnels, analysez la trajectoire historique de Léon Marchand et mesurez l’impact technologique durable laissé en héritage.
+                </p>
+                <div class="mt-8 inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
+                    <span class="w-2 h-2 rounded-full bg-joOr animate-ping"></span>
+                    <span class="text-sm tracking-wide text-joOr font-semibold">Une nouvelle ère de durabilité olympique</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div @click="currentTab = 'ecosystem'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-joBleu font-bold mb-4 group-hover:bg-joBleu group-hover:text-white transition">01</div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">L'Écosystème</h3>
+                    <p class="text-gray-600 text-sm">Gouvernance, organigrammes interactifs, répartition budgétaire et cartographie des sites.</p>
+                </div>
+                <div @click="currentTab = 'performance'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 font-bold mb-4 group-hover:bg-joOr group-hover:text-joBleu transition">02</div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">Dashboard Marchand</h3>
+                    <p class="text-gray-600 text-sm">Suivi analytique complet des performances et de la progression métrique du quadruple champion.</p>
+                </div>
+                <div @click="currentTab = 'story'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-joRose font-bold mb-4 group-hover:bg-joRose group-hover:text-white transition">03</div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joViolet">Immersion 93</h3>
+                    <p class="text-gray-600 text-sm">Récit transmédia centré sur la transformation urbaine, le logement et l'économie en Seine-Saint-Denis.</p>
+                </div>
+                <div @click="currentTab = 'innovations'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-joViolet font-bold mb-4 group-hover:bg-joViolet group-hover:text-white transition">04</div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">Innovations Tech</h3>
+                    <p class="text-gray-600 text-sm">Analyse critique de la sécurité algorithmique, de la dématérialisation et de l'efficience énergétique.</p>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="currentTab === 'ecosystem'" x-transition:enter="transition ease-out duration-300" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" x-data="{ siteFilter: 'all', openGovNode: null }">
+            <h2 class="text-3xl font-black text-joBleu mb-8 border-b-2 border-joOr pb-2">1. Écosystème Institutionnel & Budgétaire</h2>
+            
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-joViolet mb-4 flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">A</span> Gouvernance Mondiale & Nationale</h3>
+                <p class="text-sm text-gray-600 mb-6">Cliquez sur un organisme pour découvrir ses prérogatives.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div @click="openGovNode = (openGovNode === 'cio' ? null : 'cio')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cio' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
+                        <div class="font-bold text-joBleu">CIO / IOC</div>
+                        <div class="text-xs text-gray-500 mt-1">Autorité Mondiale</div>
+                        <div x-show="openGovNode === 'cio'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Garant de la Charte olympique, supervise les CNO, attribue les Jeux et gère le programme de partenariat mondial (TOP).</div>
+                    </div>
+                    <div @click="openGovNode = (openGovNode === 'cnosf' ? null : 'cnosf')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cnosf' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
+                        <div class="font-bold text-joBleu">CNOSF / CPSF</div>
+                        <div class="text-xs text-gray-500 mt-1">Coordination Nationale</div>
+                        <div x-show="openGovNode === 'cnosf'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Représentants du mouvement olympique/paralympique en France, assurant le lien fort avec les fédérations locales et l'ANS.</div>
+                    </div>
+                    <div @click="openGovNode = (openGovNode === 'cojo' ? null : 'cojo')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cojo' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
+                        <div class="font-bold text-joBleu">COJO PARIS 2024</div>
+                        <div class="text-xs text-gray-500 mt-1">Comité d'Organisation</div>
+                        <div x-show="openGovNode === 'cojo'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Présidé par Tony Estanguet. Gère un budget opérationnel d'env. 4,4 Md€, ~12M billets, se clôturant sur un excédent de +26,8 M€.</div>
+                    </div>
+                    <div @click="openGovNode = (openGovNode === 'public' ? null : 'public')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'public' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
+                        <div class="font-bold text-joBleu">Acteurs Publics</div>
+                        <div class="text-xs text-gray-500 mt-1">État & Collectivités</div>
+                        <div x-show="openGovNode === 'public'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">État français, Ville de Paris, Région Île-de-France, Grand Paris. Assurent la sécurité, l'infrastructure transports et les cadres légaux.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-joViolet flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">B</span> Cartographie & Typologie des Sites</h3>
+                        <p class="text-sm text-gray-600 mt-1"><span class="font-bold text-joRose">93%</span> des infrastructures utilisées sont déjà existantes ou temporaires.</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                        <button @click="siteFilter = 'all'" :class="siteFilter === 'all' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Tous</button>
+                        <button @click="siteFilter = 'idf'" :class="siteFilter === 'idf' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Île-de-France</button>
+                        <button @click="siteFilter = 'autres'" :class="siteFilter === 'autres' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Hors Île-de-France / Outre-Mer</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Stade de France</span>
+                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Athlétisme / Existant</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Stade Tour Eiffel / Champ-de-Mars</span>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded mt-2 self-start">Volley de Plage / Temporaire</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Invalides</span>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded mt-2 self-start">Tir à l'arc / Temporaire</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Grand Palais</span>
+                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Escrime & Taekwondo / Rénové</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Roland-Garros</span>
+                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Tennis & Boxe / Existant</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Centre Aquatique Olympique</span>
+                        <span class="text-xs bg-purple-100 text-joViolet px-2 py-0.5 rounded mt-2 self-start">Natation Artistique / Neuf (Pérenne)</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Arena Porte de la Chapelle</span>
+                        <span class="text-xs bg-purple-100 text-joViolet px-2 py-0.5 rounded mt-2 self-start">Badminton / Neuf (Pérenne)</span>
+                    </div>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'autres'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Teahupo'o (Tahiti)</span>
+                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Surf / Site Naturel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-joViolet mb-6 flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">C</span> Répartition Budgétaire & Actifs Pérennes</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Comparatif Financement Privé vs Estimations de la Dépense Publique</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-semibold text-joBleu">COJO (Privé / Sponsoring / Billetterie)</span>
+                                    <span class="font-bold text-green-600">4.4 Md€ (Équilibré + 26.8M€ d'excédent)</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-6 rounded-full overflow-hidden">
+                                    <div class="bg-green-5
