@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paris 2024 : Écosystème & Héritage</title>
+    <title>Paris 2024 - Écosystème, Performance & Héritage</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -15,185 +17,601 @@
                         joOr: '#E5C58A',
                         joRose: '#E84E8A',
                         joViolet: '#62228E',
-                        joIvoire: '#FAF7F2'
+                        joArrierePlan: '#F8FAFC'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Styles personnalisés additionnels pour peaufiner l'immersion */
-        .neon-border:hover {
-            box-shadow: 0 0 15px rgba(229, 197, 138, 0.4);
-            border-color: #E5C58A;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #F1F5F9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased" x-data="{ currentTab: 'home' }">
+<body class="bg-joArrierePlan text-slate-900 min-h-screen pt-20 antialiased selection:bg-joRose selection:text-white" x-data="{ currentSection: 'accueil' }">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-joBleu text-white shadow-lg border-b border-joOr/30 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3 cursor-pointer" @click="currentTab = 'home'">
-                    <div class="w-10 h-10 bg-gradient-to-tr from-joOr via-joRose to-joViolet rounded-full flex items-center justify-center font-bold text-white shadow-inner">
-                        24
-                    </div>
-                    <div>
-                        <span class="font-extrabold text-xl tracking-wider text-joOr">PARIS 2024</span>
-                        <span class="block text-xs uppercase tracking-widest text-gray-300">Écosystème & Héritage</span>
-                    </div>
+    <nav class="fixed top-0 left-0 right-0 h-20 bg-joBleu text-white shadow-xl z-50 border-b border-joOr/20 backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer select-none" @click="currentSection = 'accueil'">
+                <div class="w-11 h-11 bg-gradient-to-tr from-joOr via-joRose to-joViolet rounded-xl flex items-center justify-center font-black text-white text-lg shadow-md transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                    24
                 </div>
+                <div>
+                    <span class="font-black text-lg tracking-wider text-joOr block leading-none">PARIS 2024</span>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Écosystème & Héritage</span>
+                </div>
+            </div>
 
-                <div class="hidden md:flex space-x-1 text-sm font-medium">
-                    <button @click="currentTab = 'ecosystem'" :class="currentTab === 'ecosystem' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Écosystème</button>
-                    <button @click="currentTab = 'performance'" :class="currentTab === 'performance' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Dashboard Marchand</button>
-                    <button @click="currentTab = 'story'" :class="currentTab === 'story' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Récit Seine-Saint-Denis</button>
-                    <button @click="currentTab = 'innovations'" :class="currentTab === 'innovations' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'hover:bg-white/10 text-gray-200'" class="px-4 py-2 rounded-md transition duration-300">Innovations</button>
-                </div>
+            <div class="hidden md:flex items-center space-x-1 text-sm font-medium">
+                <button @click="currentSection = 'ecosysteme'" :class="currentSection === 'ecosysteme' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'text-slate-200 hover:bg-white/5'" class="px-4 py-2 rounded-lg transition duration-200">Écosystème</button>
+                <button @click="currentSection = 'performance'" :class="currentSection === 'performance' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'text-slate-200 hover:bg-white/5'" class="px-4 py-2 rounded-lg transition duration-200">Dashboard Marchand</button>
+                <button @click="currentSection = 'recit'" :class="currentSection === 'recit' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'text-slate-200 hover:bg-white/5'" class="px-4 py-2 rounded-lg transition duration-200">Récit Immersif (93)</button>
+                <button @click="currentSection = 'innovations'" :class="currentSection === 'innovations' ? 'bg-joViolet text-joOr border-b-2 border-joOr' : 'text-slate-200 hover:bg-white/5'" class="px-4 py-2 rounded-lg transition duration-200">Innovations Tech</button>
+            </div>
 
-                <div class="flex items-center space-x-2">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500 text-white animate-pulse">
-                        Live Legacy
-                    </span>
-                </div>
+            <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-bold tracking-wider text-slate-300 font-mono uppercase">Héritage Actif</span>
             </div>
         </div>
     </nav>
 
-    <main class="pt-24 min-h-screen">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-        <div x-show="currentTab === 'home'" x-transition:enter="transition ease-out duration-300" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="text-center py-16 bg-gradient-to-b from-joBleu to-joViolet text-white rounded-3xl shadow-2xl relative overflow-hidden mb-16 px-6">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4">
-                    Paris 2024 : <span class="text-joOr">Écosystème & Héritage</span>
-                </h1>
-                <p class="text-xl max-w-3xl mx-auto text-gray-200 font-light leading-relaxed">
-                    Explorez les rouages institutionnels, analysez la trajectoire historique de Léon Marchand et mesurez l’impact technologique durable laissé en héritage.
-                </p>
-                <div class="mt-8 inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
-                    <span class="w-2 h-2 rounded-full bg-joOr animate-ping"></span>
-                    <span class="text-sm tracking-wide text-joOr font-semibold">Une nouvelle ère de durabilité olympique</span>
+        <div x-show="currentSection === 'accueil'" x-transition:enter="transition ease-out duration-300" class="space-y-12">
+            <div class="relative bg-gradient-to-br from-joBleu via-joBleu to-joViolet text-white rounded-3xl p-8 md:p-16 shadow-2xl overflow-hidden text-center md:text-left">
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                <div class="relative z-10 max-w-3xl space-y-6">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-joOr border border-joOr/30">
+                        Plateforme d'Analyse Post-Jeux
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none">
+                        Paris 2024 : <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-joOr via-white to-joOr">Écosystème & Héritage</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 font-light leading-relaxed">
+                        Explorez la structure de gouvernance institutionnelle, revivez la trajectoire métrique absolue de Léon Marchand et évaluez les transformations physiques et technologiques laissées en héritage.
+                    </p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div @click="currentTab = 'ecosystem'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
-                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-joBleu font-bold mb-4 group-hover:bg-joBleu group-hover:text-white transition">01</div>
-                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">L'Écosystème</h3>
-                    <p class="text-gray-600 text-sm">Gouvernance, organigrammes interactifs, répartition budgétaire et cartographie des sites.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div @click="currentSection = 'ecosysteme'" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 hover:border-joOr transition-all duration-300 cursor-pointer transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-indigo-50 text-joBleu rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-joBleu group-hover:text-white transition-colors">01</div>
+                    <h3 class="text-xl font-bold text-joBleu mt-4 mb-2 group-hover:text-joRose transition-colors">L'Écosystème</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Organigramme interactif de la gouvernance, filtres des sites olympiques et arbitrages budgétaires.</p>
                 </div>
-                <div @click="currentTab = 'performance'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
-                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 font-bold mb-4 group-hover:bg-joOr group-hover:text-joBleu transition">02</div>
-                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">Dashboard Marchand</h3>
-                    <p class="text-gray-600 text-sm">Suivi analytique complet des performances et de la progression métrique du quadruple champion.</p>
+                <div @click="currentSection = 'performance'" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 hover:border-joOr transition-all duration-300 cursor-pointer transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-joOr group-hover:text-joBleu transition-colors">02</div>
+                    <h3 class="text-xl font-bold text-joBleu mt-4 mb-2 group-hover:text-joRose transition-colors">Performance</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Analyse des temps de Léon Marchand. Comparaison précise des gains chronométriques sélections vs finales JO.</p>
                 </div>
-                <div @click="currentTab = 'story'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
-                    <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-joRose font-bold mb-4 group-hover:bg-joRose group-hover:text-white transition">03</div>
-                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joViolet">Immersion 93</h3>
-                    <p class="text-gray-600 text-sm">Récit transmédia centré sur la transformation urbaine, le logement et l'économie en Seine-Saint-Denis.</p>
+                <div @click="currentSection = 'recit'" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 hover:border-joOr transition-all duration-300 cursor-pointer transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-pink-50 text-joRose rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-joRose group-hover:text-white transition-colors">03</div>
+                    <h3 class="text-xl font-bold text-joBleu mt-4 mb-2 group-hover:text-joViolet transition-colors">Récit (93)</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Scroll-storytelling immersif axé sur le logement social, la mobilité urbaine et l'économie en Seine-Saint-Denis.</p>
                 </div>
-                <div @click="currentTab = 'innovations'" class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 hover:border-joOr transition duration-300 transform hover:-translate-y-2 cursor-pointer group">
-                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-joViolet font-bold mb-4 group-hover:bg-joViolet group-hover:text-white transition">04</div>
-                    <h3 class="text-xl font-bold text-joBleu mb-2 group-hover:text-joRose">Innovations Tech</h3>
-                    <p class="text-gray-600 text-sm">Analyse critique de la sécurité algorithmique, de la dématérialisation et de l'efficience énergétique.</p>
+                <div @click="currentSection = 'innovations'" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 hover:border-joOr transition-all duration-300 cursor-pointer transform hover:-translate-y-1 group">
+                    <div class="w-12 h-12 bg-purple-50 text-joViolet rounded-xl flex items-center justify-center font-bold text-lg group-hover:bg-joViolet group-hover:text-white transition-colors">04</div>
+                    <h3 class="text-xl font-bold text-joBleu mt-4 mb-2 group-hover:text-joRose transition-colors">Innovations</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">Rapport critique sur la cybersécurité, la vidéosurveillance algorithmique et la transition énergétique.</p>
                 </div>
             </div>
         </div>
 
-        <div x-show="currentTab === 'ecosystem'" x-transition:enter="transition ease-out duration-300" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" x-data="{ siteFilter: 'all', openGovNode: null }">
-            <h2 class="text-3xl font-black text-joBleu mb-8 border-b-2 border-joOr pb-2">1. Écosystème Institutionnel & Budgétaire</h2>
-            
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-joViolet mb-4 flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">A</span> Gouvernance Mondiale & Nationale</h3>
-                <p class="text-sm text-gray-600 mb-6">Cliquez sur un organisme pour découvrir ses prérogatives.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div @click="openGovNode = (openGovNode === 'cio' ? null : 'cio')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cio' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
-                        <div class="font-bold text-joBleu">CIO / IOC</div>
-                        <div class="text-xs text-gray-500 mt-1">Autorité Mondiale</div>
-                        <div x-show="openGovNode === 'cio'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Garant de la Charte olympique, supervise les CNO, attribue les Jeux et gère le programme de partenariat mondial (TOP).</div>
+        <div x-show="currentSection === 'ecosysteme'" x-transition:enter="transition ease-out duration-300" class="space-y-10" x-data="{ openNode: null, siteFilter: 'all' }">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-3xl font-black text-joBleu tracking-tight">1. Écosystème Institutionnel, Cartographie & Budgets</h2>
+                <p class="text-slate-500 text-sm mt-1">Analyse complète des instances de gouvernance, de la répartition géographique et des flux financiers.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60">
+                <h3 class="text-lg font-bold text-joBleu mb-2 flex items-center">
+                    <span class="w-2 h-4 bg-joViolet rounded-sm mr-2 block"></span> Organigramme de Gouvernance Interactif
+                </h3>
+                <p class="text-xs text-slate-400 mb-6">Cliquez sur une entité institutionnelle pour déployer ses compétences clés et données budgétaires associées.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div @click="openNode = (openNode === 'cio' ? null : 'cio')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'cio' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
+                        <div class="font-bold text-joBleu text-base">CIO / IOC</div>
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Autorité Mondiale</div>
+                        <div x-show="openNode === 'cio'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p>Garant suprême de la Charte olympique. Il supervise l'ensemble des Comités Nationaux Olympiques (CNO) et attribue l'organisation des Jeux.</p>
+                            <p class="font-semibold text-joViolet">Gestion exclusive des partenariats mondiaux (TOP).</p>
+                        </div>
                     </div>
-                    <div @click="openGovNode = (openGovNode === 'cnosf' ? null : 'cnosf')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cnosf' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
-                        <div class="font-bold text-joBleu">CNOSF / CPSF</div>
-                        <div class="text-xs text-gray-500 mt-1">Coordination Nationale</div>
-                        <div x-show="openGovNode === 'cnosf'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Représentants du mouvement olympique/paralympique en France, assurant le lien fort avec les fédérations locales et l'ANS.</div>
+                    <div @click="openNode = (openNode === 'cnosf' ? null : 'cnosf')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'cnosf' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
+                        <div class="font-bold text-joBleu text-base">CNOSF / CPSF</div>
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Coordination Nationale</div>
+                        <div x-show="openNode === 'cnosf'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p>Représentants officiels du mouvement olympique et paralympique sur le sol français.</p>
+                            <p class="font-semibold text-joViolet">Assurent l'interface avec les fédérations sportives nationales et l'Agence Nationale du Sport (ANS).</p>
+                        </div>
                     </div>
-                    <div @click="openGovNode = (openGovNode === 'cojo' ? null : 'cojo')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'cojo' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
-                        <div class="font-bold text-joBleu">COJO PARIS 2024</div>
-                        <div class="text-xs text-gray-500 mt-1">Comité d'Organisation</div>
-                        <div x-show="openGovNode === 'cojo'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">Présidé par Tony Estanguet. Gère un budget opérationnel d'env. 4,4 Md€, ~12M billets, se clôturant sur un excédent de +26,8 M€.</div>
+                    <div @click="openNode = (openNode === 'cojo' ? null : 'cojo')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'cojo' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
+                        <div class="font-bold text-joBleu text-base">COJO PARIS 2024</div>
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">Comité d'Organisation</div>
+                        <div x-show="openNode === 'cojo'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p>Présidé par Tony Estanguet. Maître d'œuvre de la livraison opérationnelle des épreuves.</p>
+                            <div class="bg-slate-100 p-2 rounded-lg font-mono text-[11px] text-slate-700 space-y-1">
+                                <div>• Budget : ~4,4 Md€</div>
+                                <div>• Billetterie : ~12M billets</div>
+                                <div class="text-emerald-600 font-bold">• Surplus : +26,8 M€</div>
+                            </div>
+                        </div>
                     </div>
-                    <div @click="openGovNode = (openGovNode === 'public' ? null : 'public')" class="p-5 bg-white border rounded-xl cursor-pointer transition hover:bg-slate-50" :class="openGovNode === 'public' ? 'ring-2 ring-joOr bg-joIvoire' : ''">
-                        <div class="font-bold text-joBleu">Acteurs Publics</div>
-                        <div class="text-xs text-gray-500 mt-1">État & Collectivités</div>
-                        <div x-show="openGovNode === 'public'" x-transition class="text-sm mt-3 text-gray-700 pt-2 border-t border-dashed">État français, Ville de Paris, Région Île-de-France, Grand Paris. Assurent la sécurité, l'infrastructure transports et les cadres légaux.</div>
+                    <div @click="openNode = (openNode === 'public' ? null : 'public')" class="p-5 border rounded-xl cursor-pointer transition-all duration-200 hover:bg-slate-50/80 relative" :class="openNode === 'public' ? 'border-joOr ring-2 ring-joOr/20 bg-joIvoire/40' : 'border-slate-200'">
+                        <div class="font-bold text-joBleu text-base">Acteurs Publics</div>
+                        <div class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold mt-0.5">État & Collectivités</div>
+                        <div x-show="openNode === 'public'" x-transition class="mt-4 pt-3 border-t border-dashed border-slate-200 text-xs text-slate-600 space-y-2">
+                            <p>Regroupe l'État Français, la Ville de Paris, la Région Île-de-France et la Métropole du Grand Paris.</p>
+                            <p class="font-semibold text-joViolet">Piliers de la coordination sécuritaire, de l'adaptation législative et du réseau de transport public.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mb-12">
-                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
                     <div>
-                        <h3 class="text-xl font-bold text-joViolet flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">B</span> Cartographie & Typologie des Sites</h3>
-                        <p class="text-sm text-gray-600 mt-1"><span class="font-bold text-joRose">93%</span> des infrastructures utilisées sont déjà existantes ou temporaires.</p>
+                        <h3 class="text-lg font-bold text-joBleu flex items-center">
+                            <span class="w-2 h-4 bg-joRose rounded-sm mr-2 block"></span> Typologie et Sélection des Sites Majeurs
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">Un modèle sobre : <span class="text-joRose font-bold">93%</span> des infrastructures de compétition sont existantes ou temporaires.</p>
                     </div>
-                    <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
-                        <button @click="siteFilter = 'all'" :class="siteFilter === 'all' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Tous</button>
-                        <button @click="siteFilter = 'idf'" :class="siteFilter === 'idf' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Île-de-France</button>
-                        <button @click="siteFilter = 'autres'" :class="siteFilter === 'autres' ? 'bg-joBleu text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 text-xs rounded-full font-medium transition">Hors Île-de-France / Outre-Mer</button>
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="siteFilter = 'all'" :class="siteFilter === 'all' ? 'bg-joBleu text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all">Tous les pôles</button>
+                        <button @click="siteFilter = 'paris'" :class="siteFilter === 'paris' ? 'bg-joBleu text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all">Paris Intra-Muros</button>
+                        <button @click="siteFilter = '93'" :class="siteFilter === '93' ? 'bg-joBleu text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all">Seine-Saint-Denis</button>
+                        <button @click="siteFilter = 'hors-idf'" :class="siteFilter === 'hors-idf' ? 'bg-joBleu text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all">Régions & Outre-Mer</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div x-show="siteFilter === 'all' || siteFilter === '93'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Stade de France</span>
-                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Athlétisme / Existant</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Athlétisme / Existant</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                        <span class="text-sm font-bold text-joBleu">Stade Tour Eiffel / Champ-de-Mars</span>
-                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded mt-2 self-start">Volley de Plage / Temporaire</span>
+                    <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Champ-de-Mars</span>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Volley de plage / Temporaire</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Invalides</span>
-                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded mt-2 self-start">Tir à l'arc / Temporaire</span>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Tir à l'arc / Temporaire</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Grand Palais</span>
-                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Escrime & Taekwondo / Rénové</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Escrime & Taekwondo</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Roland-Garros</span>
-                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Tennis & Boxe / Existant</span>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded mt-3 self-start">Tennis & Boxe / Existant</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                        <span class="text-sm font-bold text-joBleu">Centre Aquatique Olympique</span>
-                        <span class="text-xs bg-purple-100 text-joViolet px-2 py-0.5 rounded mt-2 self-start">Natation Artistique / Neuf (Pérenne)</span>
+                    <div x-show="siteFilter === 'all' || siteFilter === '93'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
+                        <span class="text-sm font-bold text-joBleu">Centre Aquatique (CAO)</span>
+                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Natation / Neuf (Pérenne)</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'idf'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'paris'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Arena Porte de la Chapelle</span>
-                        <span class="text-xs bg-purple-100 text-joViolet px-2 py-0.5 rounded mt-2 self-start">Badminton / Neuf (Pérenne)</span>
+                        <span class="text-[10px] bg-purple-100 text-joViolet font-bold px-2 py-0.5 rounded mt-3 self-start">Badminton / Neuf (Pérenne)</span>
                     </div>
-                    <div x-show="siteFilter === 'all' || siteFilter === 'autres'" class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div x-show="siteFilter === 'all' || siteFilter === 'hors-idf'" class="p-4 bg-slate-50 rounded-xl border border-slate-200/40 flex flex-col justify-between">
                         <span class="text-sm font-bold text-joBleu">Teahupo'o (Tahiti)</span>
-                        <span class="text-xs bg-pink-100 text-joRose px-2 py-0.5 rounded mt-2 self-start">Surf / Site Naturel</span>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded mt-3 self-start">Surf / Site Naturel</span>
                     </div>
                 </div>
             </div>
 
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-joViolet mb-6 flex items-center"><span class="bg-joViolet text-white w-6 h-6 rounded-full inline-flex items-center justify-center text-xs mr-2">C</span> Répartition Budgétaire & Actifs Pérennes</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:col-span-2">
-                        <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">Comparatif Financement Privé vs Estimations de la Dépense Publique</h4>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between text-sm mb-1">
-                                    <span class="font-semibold text-joBleu">COJO (Privé / Sponsoring / Billetterie)</span>
-                                    <span class="font-bold text-green-600">4.4 Md€ (Équilibré + 26.8M€ d'excédent)</span>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 lg:col-span-2 space-y-5">
+                    <h3 class="text-lg font-bold text-joBleu flex items-center">
+                        <span class="w-2 h-4 bg-joOr rounded-sm mr-2 block"></span> Comparatif des Budgets Privés et Publics
+                    </h3>
+                    <div class="space-y-4 pt-2">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-700">Budget COJO (Fonds Privés : Billetterie, Sponsoring, CIO)</span>
+                                <span class="text-emerald-600 font-bold">~4,4 Md€ (Excédent final +26,8 M€)</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full rounded-full" style="width: 73%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-700">Dépense Publique Globale (Est. Cour des comptes, juin 2025)</span>
+                                <span class="text-amber-600 font-bold">~6,0 Md€</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
+                                <div class="bg-amber-500 h-full rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span class="text-slate-700">Dépense Publique Globale (Rapport parlementaire, juillet 2025)</span>
+                                <span class="text-indigo-600 font-bold">~3,67 Md€</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-5 rounded-full overflow-hidden">
+                                <div class="bg-indigo-600 h-full rounded-full" style="width: 61%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 italic">Note UX : La fourchette indicative de la dépense publique doit être présentée avec prudence en raison des périmètres méthodologiques variables.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-joBleu to-joViolet text-white rounded-2xl p-6 shadow-md flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-joOr font-mono">Maillon de l'Héritage</span>
+                        <h4 class="text-2xl font-black mt-1 mb-3 tracking-tight">SOLIDEO</h4>
+                        <p class="text-xs text-slate-200 leading-relaxed font-light">
+                            Société de Livraison des Ouvrages Olympiques. Établissement public chargé de concevoir et livrer l'ensemble des structures pérennes tout en garantissant un modèle d'urbanisme durable pour la phase post-événementielle.
+                        </p>
+                    </div>
+                    <div class="border-t border-white/10 pt-3 mt-4 text-[10px] font-mono text-joOr flex justify-between">
+                        <span>Statut :</span>
+                        <span class="font-bold">Ouvrages livrés dans les temps</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60">
+                <h3 class="text-lg font-bold text-joBleu mb-8 flex items-center">
+                    <span class="w-2 h-4 bg-emerald-500 rounded-sm mr-2 block"></span> Trajectoire Éco-Responsable & Chronologie
+                </h3>
+                
+                <div class="relative border-l-2 border-slate-200 ml-4 md:ml-32 space-y-8">
+                    <div class="relative">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 bg-slate-300 rounded-full ring-4 ring-white"></div>
+                        <div class="md:absolute md:-left-28 md:top-0.5 text-xs font-bold text-slate-400 font-mono text-right md:w-20">2017 - 2023</div>
+                        <div class="ml-6 bg-slate-50 p-4 rounded-xl border border-slate-200/40">
+                            <h4 class="text-sm font-bold text-joBleu">Candidature, Planification & Chantiers</h4>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Fixation de critères environnementaux sans précédent et intégration des clauses d'insertion dans la commande publique.</p>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 bg-joRose rounded-full ring-4 ring-white"></div>
+                        <div class="md:absolute md:-left-28 md:top-0.5 text-xs font-bold text-joRose font-mono text-right md:w-20">Édition 2024</div>
+                        <div class="ml-6 bg-white p-4 rounded-xl border border-joRose/20 shadow-sm">
+                            <h4 class="text-sm font-bold text-joBleu">Phase Opérationnelle & Performance Carbone</h4>
+                            <ul class="text-xs text-slate-600 mt-2 space-y-1 list-disc list-inside font-light">
+                                <li>Réduction validée de <span class="font-bold text-joRose">54,6 %</span> des émissions CO₂ face aux précédentes éditions.</li>
+                                <li>Mobilisation de plus de <span class="font-bold text-joViolet">1 000 entreprises</span> de l'Économie Sociale et Solidaire (ESS).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[7px] top-1 w-3 h-3 bg-joViolet rounded-full ring-4 ring-white"></div>
+                        <div class="md:absolute md:-left-28 md:top-0.5 text-xs font-bold text-joViolet font-mono text-right md:w-20">2025 - 2030</div>
+                        <div class="ml-6 bg-slate-50 p-4 rounded-xl border border-slate-200/40">
+                            <h4 class="text-sm font-bold text-joBleu">Reconversion & Héritage Matériel</h4>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">Transformation immédiate du Village en éco-quartiers habitables et réutilisation pérenne de 95% des structures et mobiliers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="currentSection === 'performance'" x-transition:enter="transition ease-out duration-300" class="space-y-8"
+             x-data="{ 
+                filterEpreuve: 'all', 
+                triBy: 'date',
+                donneesRaces: [
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m 4 nages', date: '2024-06-21', lieu: 'Chartres (FRA)', chrono: '1:56.33', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m 4 nages', date: '2024-08-02', lieu: 'Paris La Défense Arena', chrono: '1:54.06 (OR)', place: 'Or (record olympique)', evo: 1.95, note: 'Net progrès vs sélections' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m brasse', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '2:08.95', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m brasse', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '2:05.85 (OR)', place: 'Or (record olympique)', evo: 2.40, note: 'Net progrès vs sélections' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '200 m papillon', date: '2024-06-19', lieu: 'Chartres (FRA)', chrono: '1:54.08', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '200 m papillon', date: '2024-07-31', lieu: 'Paris La Défense Arena', chrono: '1:51.21 (OR)', place: 'Or (record olympique)', evo: 2.52, note: 'Net progrès vs sélections' },
+                    { comp: 'Ch. de France (sélections)', epreuve: '400 m 4 nages', date: '2024-06-17', lieu: 'Chartres (FRA)', chrono: '4:10.62', place: '1er (qualification)', evo: 0, note: 'Première perf. de 2024 sur l’épreuve' },
+                    { comp: 'Jeux Olympiques de Paris 2024', epreuve: '400 m 4 nages', date: '2024-07-28', lieu: 'Paris La Défense Arena', chrono: '4:02.95 (OR)', place: 'Or (record olympique)', evo: 3.06, note: 'Net progrès vs sélections' }
+                ],
+                get racesCalculees() {
+                    let r = this.donneesRaces.filter(item => this.filterEpreuve === 'all' || item.epreuve === this.filterEpreuve);
+                    if(this.triBy === 'date') return r.sort((a,b) => new Date(a.date) - new Date(b.date));
+                    if(this.triBy === 'evo') return r.sort((a,b) => b.evo - a.evo);
+                    return r;
+                }
+             }">
+            <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-black text-joBleu tracking-tight">2. Suivi Analytique Métrique — Léon Marchand</h2>
+                    <p class="text-slate-500 text-sm mt-1">Analyse micro-comparative de l'évolution des temps absolus enregistrés durant la saison 2024.</p>
+                </div>
+                <div class="flex space-x-3">
+                    <div class="bg-white border px-4 py-2 rounded-xl text-center shadow-sm">
+                        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Titres Olympiques</span>
+                        <span class="text-xl font-black text-joBleu font-mono">4 x 🥇</span>
+                    </div>
+                    <div class="bg-white border px-4 py-2 rounded-xl text-center shadow-sm">
+                        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Progression Peak</span>
+                        <span class="text-xl font-black text-joRose font-mono">+3.06%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60">
+                <h3 class="text-sm font-bold uppercase text-slate-400 font-mono tracking-wider mb-6">Pourcentage de progression chronométrique (Sélections vs Finales JO)</h3>
+                <div class="space-y-5">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <span>400 m 4 nages</span>
+                            <span class="text-joRose font-bold font-mono">+3.06%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <span>200 m papillon</span>
+                            <span class="text-joRose font-bold font-mono">+2.52%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <span>200 m brasse</span>
+                            <span class="text-joRose font-bold font-mono">+2.40%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                            <span>200 m 4 nages</span>
+                            <span class="text-joRose font-bold font-mono">+1.95%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-joViolet to-joRose h-full rounded-full transition-all duration-500" style="width: 63%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">
+                <div class="p-4 bg-slate-50/80 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button @click="filterEpreuve = 'all'" :class="filterEpreuve === 'all' ? 'bg-joBleu text-white' : 'bg-white text-slate-600 border'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm">Toutes les distances</button>
+                        <button @click="filterEpreuve = '200 m 4 nages'" :class="filterEpreuve === '200 m 4 nages' ? 'bg-joBleu text-white' : 'bg-white text-slate-600 border'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm">200m 4N</button>
+                        <button @click="filterEpreuve = '200 m brasse'" :class="filterEpreuve === '200 m brasse' ? 'bg-joBleu text-white' : 'bg-white text-slate-600 border'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm">200m Brasse</button>
+                        <button @click="filterEpreuve = '200 m papillon'" :class="filterEpreuve === '200 m papillon' ? 'bg-joBleu text-white' : 'bg-white text-slate-600 border'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm">200m Papillon</button>
+                        <button @click="filterEpreuve = '400 m 4 nages'" :class="filterEpreuve === '400 m 4 nages' ? 'bg-joBleu text-white' : 'bg-white text-slate-600 border'" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm">400m 4N</button>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span class="text-slate-400 font-medium font-mono uppercase">Trier par :</span>
+                        <select x-model="triBy" class="bg-white border border-slate-300 rounded-lg p-2 font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-joOr">
+                            <option value="date">Chronologie (Date)</option>
+                            <option value="evo">Progression (%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-slate-200 text-left text-xs md:text-sm">
+                        <thead class="bg-slate-50 font-mono text-[11px] text-slate-400 uppercase font-bold tracking-wider">
+                            <tr>
+                                <th class="px-6 py-4.5">Compétition / Contexte</th>
+                                <th class="px-6 py-4.5">Épreuve</th>
+                                <th class="px-6 py-4.5">Date / Localisation</th>
+                                <th class="px-6 py-4.5">Chronomètre</th>
+                                <th class="px-6 py-4.5">Classement</th>
+                                <th class="px-6 py-4.5">Gain relatif</th>
+                                <th class="px-6 py-4.5 hidden lg:table-cell">Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 font-medium text-slate-700 bg-white">
+                            <template x-for="r in racesCalculees" :key="r.date + r.epreuve">
+                                <tr :class="r.comp.includes('Jeux') ? 'bg-joIvoire/30 hover:bg-joIvoire/60 font-semibold' : 'hover:bg-slate-50/50'" class="transition-colors">
+                                    <td class="px-6 py-4">
+                                        <span :class="r.comp.includes('Jeux') ? 'bg-gradient-to-r from-joViolet to-joRose text-white font-bold' : 'bg-slate-100 text-slate-600'" class="px-2.5 py-1 rounded text-[10px] font-mono tracking-wide uppercase">
+                                            <span x-text="r.comp"></span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-joBleu font-bold font-mono" x-text="r.epreuve"></td>
+                                    <td class="px-6 py-4 text-xs">
+                                        <div class="font-bold text-slate-800" x-text="r.date"></div>
+                                        <div class="text-slate-400 font-normal" x-text="r.lieu"></div>
+                                    </td>
+                                    <td class="px-6 py-4 font-mono font-bold text-base text-slate-900" x-text="r.chrono"></td>
+                                    <td class="px-6 py-4">
+                                        <span :class="r.place.includes('Or') ? 'text-amber-600 font-extrabold flex items-center' : 'text-slate-600 font-normal'" x-html="r.place.includes('Or') ? '🥇 ' + r.place : r.place"></span>
+                                    </td>
+                                    <td class="px-6 py-4 font-mono font-bold">
+                                        <span x-show="r.evo > 0" class="text-emerald-600" x-text="'+' + r.evo + ' %'"></span>
+                                        <span x-show="r.evo === 0" class="text-slate-300 font-normal">—</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-xs font-normal text-slate-500 hidden lg:table-cell" x-text="r.note"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="currentSection === 'recit'" x-transition:enter="transition ease-out duration-300" class="max-w-3xl mx-auto space-y-12 py-6">
+            <div class="text-center space-y-3">
+                <span class="text-[11px] uppercase font-extrabold font-mono tracking-widest text-joRose bg-pink-50 px-3 py-1 rounded-full border border-pink-100">Chronique d'un Territoire</span>
+                <h2 class="text-4xl font-black text-joBleu tracking-tight">3. L'Héritage Territorial en Seine-Saint-Denis (93)</h2>
+                <p class="text-slate-500 text-sm max-w-xl mx-auto font-light">Un récit de l'intérieur relatant la transformation matérielle et sociale vécue par les résidents.</p>
+            </div>
+
+            <div class="relative border-l border-slate-200 pl-6 md:pl-10 ml-2 space-y-14">
+                
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-0 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
+                    <blockquote class="text-lg md:text-xl font-serif italic text-slate-800 bg-joIvoire/50 p-6 rounded-2xl border-l-4 border-joOr shadow-sm">
+                        "Je vis depuis toujours en Seine-Saint-Denis, et j'ai suivi de près la préparation... Je prends un moment pour témoigner de ce que j'ai observé : ce que les Jeux ont laissé, ce qu'ils ont transformé, et ce que cela change pour mon quotidien."
+                        <span class="block text-[11px] font-mono tracking-widest uppercase font-bold text-slate-400 not-italic mt-3">— Regard Habitant, Extrait du Texte Local</span>
+                    </blockquote>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2">Métamorphose du Logement & Plan Piscines</h3>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
+                        Le secteur du village des athlètes, à Saint-Denis, se transforme de manière pérenne en un éco-quartier moderne pourvu de commerces, d'espaces verts et d'infrastructures. Les **4 000 logements** programmés intègrent un quota protecteur de **40% de logements sociaux**. 
+                        Parallèlement, le <span class="font-bold text-joViolet">"plan piscines"</span> vient combler de façon définitive le déficit structurel de bassins (historiquement qualifié de *désert de natation*).
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="bg-white border rounded-xl p-4 shadow-sm text-center">
+                            <span class="block text-2xl font-black text-joViolet font-mono">4 000</span>
+                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">Logements en Reconversion</span>
+                        </div>
+                        <div class="bg-white border rounded-xl p-4 shadow-sm text-center">
+                            <span class="block text-2xl font-black text-joRose font-mono">40%</span>
+                            <span class="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">De Logement Social Garanti</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2">Désenclavement & Franchissements Urbains</h3>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
+                        L'apparition de passerelles conçues pour <span class="italic font-medium text-joBleu">"recoudre"</span> les deux rives de la Seine ou enjamber les complexes autoroutiers a profondément fluidifié les mobilités douces de proximité. Ce nouveau franchissement urbain permet de relier plus efficacement les communes limitrophes et de réduire considérablement les trajets journaliers en bus ou à pied.
+                    </p>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2">Commande Publique Fléchée & Insertion</h3>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light mb-4">
+                        Les chantiers ont fait sauter les plafonds des clauses d'insertion professionnelle pour les publics éloignés de l'emploi. Le grand bénéficiaire reste le tissu de PME et d'artisans locaux : pas moins de **280 millions d'euros** de commandes de l'État et des donneurs d'ordres ont été directement injectés au bénéfice des entreprises du 93.
+                    </p>
+                    <div class="bg-joBleu text-white px-5 py-3 rounded-xl flex items-center justify-between font-mono text-xs shadow-md">
+                        <span class="text-slate-300 font-sans">Retombées Économiques directes (PME du 93) :</span>
+                        <span class="text-lg font-black text-joOr">280 000 000 €</span>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1 w-4 h-4 rounded-full bg-joBleu ring-4 ring-white group-hover:bg-joOr transition-colors"></div>
+                    <h3 class="text-xl font-bold text-joBleu mb-2">Cohésion Sociale et Équipements Mobiles</h3>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed font-light">
+                        Afin que la pratique ne s'adresse pas qu'à des élites, des dispositifs inclusifs innovants ont été lancés. À l'image de la municipalité de Tremblay-en-France, le territoire s'est doté d'équipements sportifs mobiles (structures de boxe gonflables, terrains de basket 3x3 mobiles) afin d'apporter l'activité au pied des immeubles et de recréer de la cohésion intergénérationnelle.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div x-show="currentSection === 'innovations'" x-transition:enter="transition ease-out duration-300" class="space-y-8"
+             x-data="{ 
+                currentDomaine: 'all',
+                activeScenario: {}, // Dictionnaire d'état [id_innovation]: 'opt' | 'rea' | 'pes'
+                lesInnovations: [
+                    { id: 1, nom: 'Vidéosurveillance algorithmique', dom: 'Sécurité', eff: 4, acc: 2.5, per: 3.5, rec: 'Co-construire un cadre de transparence (panneaux clairs, audits indépendants), publier des métriques d\'efficacité non nominatives, instaurer un « privacy by design ».', opt: 'Pérennisation avec gouvernance forte, baisse des incidents et temps de réponse sur les événements massifs.', rea: 'Usage ciblé (périmètres/horaires restreints) avec évaluations parlementaires et audits réguliers.', pes: 'Rejet social et juridique majeur des ONG entraînant le retrait complet des dispositifs algorithmiques.' },
+                    { id: 2, nom: 'Billetterie 100% dématérialisée', dom: 'Spectateurs', eff: 4.5, acc: 4, per: 4.5, rec: 'Offrir des options offline (wallet/QR hors-ligne), « kiosks » de secours physiques, et un canal officiel unique de revente pour tarir le marché gris.', opt: 'Intégration ID client + paiement + accès transport en un seul flux → parcours spectateur sans aucune couture.', rea: 'Maintien du 100% mobile standardisé avec guichets d\'assistance physique limités aux entrées.', pes: 'Incidents réseaux d\'envergure ou fraudes ciblées provoquant des goulots d\'étranglement majeurs et retour forcé au papier.' },
+                    { id: 3, nom: 'App transport & gestion de flux', dom: 'Spectateurs', eff: 4, acc: 4, per: 4, rec: 'Normaliser les API temps réel, exécuter des tests de charge continus, et formaliser des « playbooks » de redirection avec messagerie push multilingue.', opt: 'Orchestration multimodale (RER/métro/marche) ultra-fluide guidée par IA prédictive, intégrée à la billetterie régionale.', rea: 'Maintien efficace d\'itinéraires dédiés lors de grands pics de charge (concerts, salons).', pes: 'Surcharge des serveurs ou données de trafic incomplètes provoquant des pertes de confiance des usagers.' },
+                    { id: 4, nom: 'OBS Cloud 3.0 (Diffusion Cloud)', dom: 'Médias', eff: 5, acc: 4.5, per: 5, rec: 'Renforcer la résilience multi-cloud, unifier les normes de cybersécurité partagées, et statuer des SLA clairs sur la latence de bout en bout.', opt: 'Production audiovisuelle mondiale quasi-entièrement distante avec personnalisation par marché géographique en temps réel.', rea: 'Modèle hybride équilibré (Cloud + On-site) avec montée progressive de l\'IA pour l\'indexation automatique des temps forts.', pes: 'Incidents critiques de latence internationale ou failles de sécurité forçant le retour à des infrastructures lourdes au sol.' },
+                    { id: 5, nom: 'Infrastructures sobres & Énergie', dom: 'Durabilité', eff: 4.5, acc: 4, per: 4.5, rec: 'Standardiser l\'approche « grid-first », constituer un inventaire d\'actifs photovoltaïques mobiles et partager des tableaux de bord carbone live.', opt: 'Généralisation de contrats d\'achat d\'énergie verte exclusifs avec monitoring en temps réel de tous les événements européens.', rea: 'Généralisation réglementaire du « tout raccordé au réseau public » combiné à des parcs photovoltaïques temporaires.', pes: 'Contraintes d\'infrastructures électriques locales trop lourdes forçant le recours ponctuel aux générateurs thermiques diesel.' },
+                    { id: 6, nom: 'IA appliquée au sport (Analytics)', dom: 'Sport', eff: 3.5, acc: 3.5, per: 4, rec: 'Mettre en place des lignes directrices éthiques (explainability, fairness), former le staff technique et auditer indépendamment les modèles prédictifs.', opt: 'Plateformes IA certifiées de prévention de blessures et suivi des charges accessibles en démocratisation au sport amateur.', rea: 'Adoption ciblée par les fédérations d'élite majeures encadrée par des chartes d'usage déontologiques.', pes: 'Polémiques récurrentes sur les biais algorithmiques ou l'avantage compétitif déloyal entraînant des restrictions réglementaires.' }
+                ]
+             }">
+            
+            <div class="border-b border-slate-200 pb-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                    <h2 class="text-3xl font-black text-joBleu tracking-tight">4. Évaluation Analytique des Innovations Technologiques</h2>
+                    <p class="text-slate-500 text-sm mt-1">Matrice critique des solutions déployées, scores d'impact $(1-5)$ et scénarios prospectifs d'adoption.</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    <button @click="currentDomaine = 'all'" :class="currentDomaine === 'all' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Toutes</button>
+                    <button @click="currentDomaine = 'Sécurité'" :class="currentDomaine === 'Sécurité' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Sécurité</button>
+                    <button @click="currentDomaine = 'Spectateurs'" :class="currentDomaine === 'Spectateurs' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Spectateurs</button>
+                    <button @click="currentDomaine = 'Médias'" :class="currentDomaine === 'Médias' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Médias</button>
+                    <button @click="currentDomaine = 'Durabilité'" :class="currentDomaine === 'Durabilité' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Durabilité</button>
+                    <button @click="currentDomaine = 'Sport'" :class="currentDomaine === 'Sport' ? 'bg-joViolet text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all">Sport</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="item in lesInnovations" :key="item.id">
+                    <div x-show="currentDomaine === 'all' || item.dom === currentDomaine" 
+                         x-init="activeScenario[item.id] = 'rea'"
+                         class="bg-white rounded-2xl border border-slate-200/60 p-5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
+                        
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-slate-100 text-slate-500 rounded" x-text="item.dom"></span>
+                                <span class="w-2 h-2 rounded-full bg-joOr"></span>
+                            </div>
+                            <h4 class="text-base font-bold text-joBleu mb-4 leading-tight" x-text="item.nom"></h4>
+
+                            <div class="space-y-2.5 bg-slate-50 p-3 rounded-xl border border-slate-100 mb-5">
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-medium text-slate-500 mb-0.5">
+                                        <span>Efficacité Métier</span>
+                                        <span class="font-bold text-slate-800" x-text="item.eff + '/5'"></span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-joBleu h-full rounded-full" :style="'width: ' + (item.eff * 20) + '%'"></div>
+                                    </div>
                                 </div>
-                                <div class="w-full bg-gray-200 h-6 rounded-full overflow-hidden">
-                                    <div class="bg-green-5
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-medium text-slate-500 mb-0.5">
+                                        <span>Acceptabilité Sociale</span>
+                                        <span class="font-bold text-slate-800" x-text="item.acc + '/5'"></span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-joRose h-full rounded-full" :style="'width: ' + (item.acc * 20) + '%'"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-[11px] font-medium text-slate-500 mb-0.5">
+                                        <span>Pérennité & Héritage</span>
+                                        <span class="font-bold text-slate-800" x-text="item.per + '/5'"></span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-joViolet h-full rounded-full" :style="'width: ' + (item.per * 20) + '%'"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <div class="flex border-b border-slate-100 text-[10px] font-bold font-mono tracking-wider uppercase">
+                                    <button @click="activeScenario[item.id] = 'opt'" :class="activeScenario[item.id] === 'opt' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Optimiste</button>
+                                    <button @click="activeScenario[item.id] = 'rea'" :class="activeScenario[item.id] === 'rea' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Réaliste</button>
+                                    <button @click="activeScenario[item.id] = 'pes'" :class="activeScenario[item.id] === 'pes' ? 'border-b-2 border-joOr text-joBleu bg-joIvoire/30' : 'text-slate-400 hover:text-slate-600'" class="flex-1 py-1.5 text-center transition-all">Pessimiste</button>
+                                </div>
+                                <div class="p-3 bg-joIvoire rounded-b-xl text-xs text-slate-600 min-h-[72px] flex items-center font-light leading-relaxed border-x border-b border-slate-100">
+                                    <p x-show="activeScenario[item.id] === 'opt'" x-text="item.opt" x-transition></p>
+                                    <p x-show="activeScenario[item.id] === 'rea'" x-text="item.rea" x-transition></p>
+                                    <p x-show="activeScenario[item.id] === 'pes'" x-text="item.pes" x-transition></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 pt-4 border-t border-dashed border-slate-200 text-xs">
+                            <span class="block font-bold text-joViolet font-mono uppercase tracking-wider text-[10px] mb-1">📋 Recommandation Expert</span>
+                            <p class="text-slate-500 font-normal leading-relaxed" x-text="item.rec"></p>
+                        </div>
+
+                    </div>
+                </template>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-joBleu text-white mt-24 border-t border-joOr/20 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <p>© 2026 Ecosystème Paris 2024 Webapp — Développé sur la base des livrables de cadrage.</p>
+            <div class="flex space-x-4">
+                <span>Tailwind CSS</span>
+                <span>•</span>
+                <span>Alpine.js Reactive Matrix</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
